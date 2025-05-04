@@ -19,8 +19,8 @@
 #define FN 5
 
 /* Uncomment to enable the encoder */
-&sensors { status = "okay"; };
-&encoder { status = "okay"; };
+// &sensors { status = "okay"; };
+// &encoder { status = "okay"; };
 
 / {
 
