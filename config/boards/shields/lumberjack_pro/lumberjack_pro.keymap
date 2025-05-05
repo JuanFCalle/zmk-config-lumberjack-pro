@@ -32,8 +32,8 @@
                 <&kp LCMD>;
 
             label = "APPSWITCHER";
-            tap-ms = <40>;
-            wait-ms = <100>;
+            tap-ms = <10>;
+            wait-ms = <50>;
         };
 
         windowswitcher: windowswitcher {
@@ -50,8 +50,8 @@
                 <&kp LALT>;
 
             label = "WINDOWSWITCHER";
-            tap-ms = <40>;
-            wait-ms = <100>;
+            tap-ms = <10>;
+            wait-ms = <50>;
         };
     };
 
@@ -74,8 +74,8 @@
             bindings = <
 &trans     &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
 &kp GRAVE  &kp PERCENT      &kp AMPERSAND                      &kp DOUBLE_QUOTES   &kp PLUS                      &kp AT_SIGN             &kp DOLLAR       &kp UNDERSCORE                 &kp LEFT_BRACKET        &kp RIGHT_BRACKET                    &kp EXCLAMATION  &kp BACKSLASH
-&kp TILDE  &kp SQT          &mt LEFT_CONTROL LEFT_PARENTHESIS  &mt LEFT_ALT EQUAL  &mt LEFT_COMMAND KP_NUMBER_0  &kp LEFT_BRACE          &kp RIGHT_BRACE  &mt RIGHT_COMMAND KP_NUMBER_1  &mt RIGHT_ALT ASTERISK  &mt RIGHT_CONTROL RIGHT_PARENTHESIS  &kp MINUS        &kp PIPE
-&trans     &kp KP_NUMBER_6  &kp KP_NUMBER_7                    &kp KP_NUMBER_8     &kp KP_NUMBER_9               &kp CARET       &trans  &kp HASH         &kp KP_NUMBER_2                &kp KP_NUMBER_3         &kp KP_NUMBER_4                      &kp KP_NUMBER_5  &trans
+&kp TILDE  &kp SQT          &mt LEFT_CONTROL LEFT_PARENTHESIS  &mt LEFT_ALT EQUAL  &mt LEFT_COMMAND N0  &kp LEFT_BRACE          &kp RIGHT_BRACE  &mt RIGHT_COMMAND N1  &mt RIGHT_ALT ASTERISK  &mt RIGHT_CONTROL RIGHT_PARENTHESIS  &kp MINUS        &kp PIPE
+&trans     &kp N6  &kp N7                    &kp N8     &kp N9               &kp CARET       &trans  &kp HASH         &kp N2                &kp N3         &kp N4                      &kp N5  &trans
 &trans     &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
             >;
 
