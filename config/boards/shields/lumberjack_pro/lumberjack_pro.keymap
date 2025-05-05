@@ -35,62 +35,63 @@
             tap-ms = <40>;
             wait-ms = <100>;
         };
+
+        windowswitcher: windowswitcher {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_tap>,
+                <&sk LALT>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            label = "WINDOWSWITCHER";
+            tap-ms = <40>;
+            wait-ms = <100>;
+        };
     };
 
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
-            // ------------------------------------------------------------------------------------------
-            // |  ESC     |  1   |  2   |  3   |  4   |  5   |   6   |  7    |  8   |  9   |   0   | BSPC  |
-            // |  TAB     |  Q   |  W   |  E   |  R   |  T   |   Y   |  U    |  I   |  O   |   P   | DEL   |
-            // | LCTL/ESC |  A   |  S   |  D   |  F   |  G   |   H   |  J    |  K   |  L   |   ;   |  '    |
-            // | SHIFT    |  Z   |  X   |  C   |  V   |  B   |   N   |  M    |  ,   |  .   |   /   | ENTER |
-            // |ADJUST | LCTL | LGUI | LALT | LOWR | SPACE| SPACE |  RAIS | LARW | DARW | UARW  | RARW  |
-
             bindings = <
-&none          &kp LEFT  &kp DOWN            &kp UP          &kp RIGHT   &kp C_VOLUME_DOWN                 &kp C_VOLUME_UP        &kp LEFT             &kp DOWN         &kp UP               &kp RIGHT      &caps_word
-&appswitcher   &kp Q     &kp W               &kp F           &kp P       &kp G                             &kp J                  &kp L                &kp U            &kp Y                &kp SEMICOLON  &none
-&kp BACKSPACE  &kp A     &mt LEFT_CONTROL R  &mt LEFT_ALT S  &mt LCMD T  &kp D                             &kp H                  &mt RIGHT_COMMAND N  &mt RIGHT_ALT E  &mt RIGHT_CONTROL I  &kp O          &kp ESCAPE
-&kp TAB        &kp Z     &kp X               &kp C           &kp V       &kp B                 &kp C_MUTE  &kp K                  &kp M                &kp COMMA        &kp DOT              &kp FSLH       &kp RET
-&kp LS(TAB)    &none     &none               &lt 2 LEFT      &lt 1 DOWN  &mt LEFT_SHIFT SPACE              &mt RIGHT_SHIFT SPACE  &lt 1 UP             &lt 2 RIGHT      &none                &none          &kp RS(ENTER)
+&kp C_PWR      &kp C_PREV       &kp C_PP            &kp C_NEXT      &kp C_VOL_DN       &kp C_VOL_UP                      &caps_word             &kp CAPS             &kp LEFT         &kp DOWN             &kp UP         &kp RIGHT
+&appswitcher   &kp Q            &kp W               &kp F           &kp P              &kp G                             &kp J                  &kp L                &kp U            &kp Y                &kp SEMICOLON  &windowswitcher
+&kp BACKSPACE  &kp A            &mt LEFT_CONTROL R  &mt LEFT_ALT S  &mt LCMD T         &kp D                             &kp H                  &mt RIGHT_COMMAND N  &mt RIGHT_ALT E  &mt RIGHT_CONTROL I  &kp O          &kp ESCAPE
+&kp TAB        &kp Z            &kp X               &kp C           &kp V              &kp B                 &kp C_MUTE  &kp K                  &kp M                &kp COMMA        &kp DOT              &kp FSLH       &kp RET
+&kp LS(TAB)    &kp LG(LSHFT)    &kp LG(LALT)        &lt 2 LEFT      &lt 1 DOWN         &mt LEFT_SHIFT SPACE              &mt RIGHT_SHIFT SPACE  &lt 1 UP             &lt 2 RIGHT      &kp RG(RALT)         &kp RG(RSHFT)  &kp RS(ENTER)
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         lower_layer {
-            // -------------------------------------------------------------------------------------------
-            // |  ESC  |  F2  |  F3  |  F4  |  F5  |  F6  |   F7  |  F8   |  F9  | F10  |  F11  |  F12  |
-            // |   ~   |  !   |  @   |  #   |  $   |  %   |   ^   |   &   |  *   |  (   |   )   |  DEL  |
-            // |       |  F1  |  F2  |  F3  |  F4  |  F5  |   F6  |   _   |  +   |  {   |   }   |   |   |
-            // |       |  F7  |  F8  |  F9  |  F10 |  F11 |   F12 | LS(#) |LS(|) |      |       |       |
-            // |       |      |      |      |      |      |       |       | NEXT | Vol- | Vol+ | PLAY   |
-
             bindings = <
-&none      &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &none
+&trans     &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
 &kp GRAVE  &kp PERCENT      &kp AMPERSAND                      &kp DOUBLE_QUOTES   &kp PLUS                      &kp AT_SIGN             &kp DOLLAR       &kp UNDERSCORE                 &kp LEFT_BRACKET        &kp RIGHT_BRACKET                    &kp EXCLAMATION  &kp BACKSLASH
 &kp TILDE  &kp SQT          &mt LEFT_CONTROL LEFT_PARENTHESIS  &mt LEFT_ALT EQUAL  &mt LEFT_COMMAND KP_NUMBER_0  &kp LEFT_BRACE          &kp RIGHT_BRACE  &mt RIGHT_COMMAND KP_NUMBER_1  &mt RIGHT_ALT ASTERISK  &mt RIGHT_CONTROL RIGHT_PARENTHESIS  &kp MINUS        &kp PIPE
 &trans     &kp KP_NUMBER_6  &kp KP_NUMBER_7                    &kp KP_NUMBER_8     &kp KP_NUMBER_9               &kp CARET       &trans  &kp HASH         &kp KP_NUMBER_2                &kp KP_NUMBER_3         &kp KP_NUMBER_4                      &kp KP_NUMBER_5  &trans
 &trans     &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
             >;
+
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
         };
 
         raise_layer {
-            // ------------------------------------------------------------------------------------------
-            // |  ESC  |  F2  |  F3  |  F4  |  F5  |  F6  |  F7   |  F8   |  F9  | F10  |  F11  |  F12  |
-            // |   ~   |  1   |  2   |  3   |  4   |  5   |  6    |   7   |  8   |  9   |   0   |  DEL  |
-            // |  DEL  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6   |   -   |  =   |  [   |   ]   |   \   |
-            // |       |  F7  |  F8  |  F9  |  F10 |  F11 |  F12  |   #   |  |   |      |       |       |
-            // |       |      |      |      |      |      |       |       |       |      |      |       |
-
             bindings = <
-&bt BT_CLR_ALL  &trans        &trans        &trans    &trans                &trans                  &trans           &trans                &trans    &trans         &trans         &bt BT_CLR
-&bt BT_NXT      &bt BT_SEL 0  &bt BT_SEL 1  &none     &none                 &none                   &none            &none                 &none     &bt BT_DISC 1  &bt BT_DISC 0  &bt BT_PRV
-&none           &kp F12       &kp LCTRL     &kp LALT  &mt LEFT_COMMAND F10  &none                   &none            &mt RIGHT_COMMAND F1  &kp RALT  &kp RCTRL      &kp F11        &none
-&trans          &kp F6        &kp F7        &kp F8    &kp F9                &none           &trans  &none            &kp F2                &kp F3    &kp F4         &kp F5         &trans
-&trans          &trans        &trans        &trans    &trans                &kp LEFT_SHIFT          &kp RIGHT_SHIFT  &trans                &trans    &trans         &trans         &trans
+&trans          &trans        &trans        &trans    &trans                &trans                      &trans           &trans                &trans    &trans         &trans         &trans
+&bt BT_SEL 1    &none         &none         &none     &none                 &none                       &none            &none                 &none     &none          &none          &bt BT_DISC 1
+&bt BT_SEL 2    &kp F12       &kp LCTRL     &kp LALT  &mt LEFT_COMMAND F10  &none                       &none            &mt RIGHT_COMMAND F1  &kp RALT  &kp RCTRL      &kp F11        &bt BT_DISC 2
+&trans          &kp F6        &kp F7        &kp F8    &kp F9                &none           &kp BT_CLR  &none            &kp F2                &kp F3    &kp F4         &kp F5         &trans
+&trans          &trans        &trans        &trans    &trans                &kp LEFT_SHIFT              &kp RIGHT_SHIFT  &trans                &trans    &trans         &trans         &trans
             >;
+
+            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
         };
     };
 };
