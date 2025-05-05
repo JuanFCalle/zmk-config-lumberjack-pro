@@ -17,6 +17,26 @@
 &encoder { status = "okay"; };
 
 / {
+    macros {
+        appswitcher: appswitcher {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCMD>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_tap>,
+                <&sk LCMD>,
+                <&macro_release>,
+                <&kp LCMD>;
+
+            label = "APPSWITCHER";
+            tap-ms = <40>;
+            wait-ms = <100>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -30,7 +50,7 @@
 
             bindings = <
 &none          &kp LEFT  &kp DOWN            &kp UP          &kp RIGHT   &kp C_VOLUME_DOWN                 &kp C_VOLUME_UP        &kp LEFT             &kp DOWN         &kp UP               &kp RIGHT      &caps_word
-&none          &kp Q     &kp W               &kp F           &kp P       &kp G                             &kp J                  &kp L                &kp U            &kp Y                &kp SEMICOLON  &none
+&appswitcher   &kp Q     &kp W               &kp F           &kp P       &kp G                             &kp J                  &kp L                &kp U            &kp Y                &kp SEMICOLON  &none
 &kp BACKSPACE  &kp A     &mt LEFT_CONTROL R  &mt LEFT_ALT S  &mt LCMD T  &kp D                             &kp H                  &mt RIGHT_COMMAND N  &mt RIGHT_ALT E  &mt RIGHT_CONTROL I  &kp O          &kp ESCAPE
 &kp TAB        &kp Z     &kp X               &kp C           &kp V       &kp B                 &kp C_MUTE  &kp K                  &kp M                &kp COMMA        &kp DOT              &kp FSLH       &kp RET
 &kp LS(TAB)    &none     &none               &lt 2 LEFT      &lt 1 DOWN  &mt LEFT_SHIFT SPACE              &mt RIGHT_SHIFT SPACE  &lt 1 UP             &lt 2 RIGHT      &none                &none          &kp RS(ENTER)
