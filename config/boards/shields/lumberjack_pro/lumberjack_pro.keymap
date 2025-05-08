@@ -89,7 +89,7 @@
             bindings = <
 &trans     &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
 &kp GRAVE  &kp PERCENT      &kp AMPERSAND                      &kp DOUBLE_QUOTES   &kp PLUS                      &kp AT_SIGN             &kp DOLLAR       &kp UNDERSCORE                 &kp LEFT_BRACKET        &kp RIGHT_BRACKET                    &kp EXCLAMATION  &kp BACKSLASH
-&kp TILDE  &kp SQT          HRML(LPAR,                         EQUAL,              N0)                           &kp LEFT_BRACE          &kp RIGHT_BRACE  HRMR(N1,                       STAR                    RPAR)                                &kp MINUS        &kp PIPE
+&kp TILDE  &kp SQT          HRML(LPAR,                         EQUAL,              N0)                           &kp LEFT_BRACE          &kp RIGHT_BRACE  HRMR(N1,                       STAR,                   RPAR)                                &kp MINUS        &kp PIPE
 &trans     &kp N6           &kp N7                             &kp N8              &kp N9                        &kp CARET       &trans  &kp HASH         &kp N2                         &kp N3                  &kp N4                               &kp N5           &trans
 &trans     &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
             >;
