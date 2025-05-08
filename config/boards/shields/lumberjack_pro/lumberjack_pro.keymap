@@ -74,7 +74,7 @@
         default_layer {
             bindings = <
 &kp C_PWR      &kp C_PREV       &kp C_PP            &kp C_NEXT      &kp C_VOL_DN       &kp C_VOL_UP                      &caps_word             &kp CAPS             &kp LEFT         &kp DOWN             &kp UP         &kp RIGHT
-&appswitcher   &kp Q            &kp W               &kp F           &kp P              &kp G                             &kp J                  &kp L                &kp U            &kp Y                &kp SEMICOLON  &windowswitcher
+&app_switcher   &kp Q            &kp W               &kp F           &kp P              &kp G                             &kp J                  &kp L                &kp U            &kp Y                &kp SEMICOLON  &window_switcher
 &kp BACKSPACE  &kp A            HRML(R,             S,              T)                 &kp D                             &kp H                  HRMR(N,              E,               I)                   &kp O          &kp ESCAPE
 &kp TAB        &kp Z            &kp X               &kp C           &kp V              &kp B                 &kp C_MUTE  &kp K                  &kp M                &kp COMMA        &kp DOT              &kp FSLH       &kp RET
 &kp LS(TAB)    &kp LG(LSHFT)    &kp LG(LALT)        &lt 2 LEFT      &lt 1 DOWN         &mt LEFT_SHIFT SPACE              &mt RIGHT_SHIFT SPACE  &lt 1 UP             &lt 2 RIGHT      &kp RG(RALT)         &kp RG(RSHFT)  &kp RS(ENTER)
