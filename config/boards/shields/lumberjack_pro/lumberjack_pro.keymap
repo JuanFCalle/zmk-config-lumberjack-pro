@@ -11,8 +11,8 @@
 #define BASE 0
 #define LOWER 1
 #define RAISE 2
-#define HRML(k1,k2,k3) &ht LCTRL k1  &ht LALT k2  &ht LGUI k3
-#define HRMR(k1,k2,k3) &ht RGUI k1  &ht RALT k2  &ht RCTRL k3
+#define HRML(k1,k2,k3) &mt LCTRL k1  &mt LALT k2  &mt LGUI k3
+#define HRMR(k1,k2,k3) &mt RGUI k1  &mt RALT k2  &mt RCTRL k3
 
 /* Uncomment to enable the encoder */
 &sensors { status = "okay"; };
@@ -20,7 +20,7 @@
 
 / {
     macros {
-        appswitcher: appswitcher {
+        app_switcher: app_switcher {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -33,12 +33,11 @@
                 <&macro_release>,
                 <&kp LCMD>;
 
-            label = "APPSWITCHER";
             tap-ms = <10>;
             wait-ms = <50>;
         };
 
-        windowswitcher: windowswitcher {
+        window_switcher: window_switcher {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
@@ -51,14 +50,13 @@
                 <&macro_release>,
                 <&kp LALT>;
 
-            label = "WINDOWSWITCHER";
             tap-ms = <10>;
             wait-ms = <50>;
         };
     };
 
     behaviors {
-        ht: hold_tap {
+        mt: mod_tap {
                 label = "hold_tap";
                 compatible = "zmk_behavior-hold-tap";
                 #binding-cells = <2>;
@@ -101,7 +99,7 @@
             bindings = <
 &trans          &trans        &trans        &trans    &trans                &trans                      &trans           &trans                &trans    &trans         &trans         &trans
 &bt BT_SEL 0    &none         &none         &none     &none                 &none                       &none            &none                 &none     &none          &none          &bt BT_DISC 0
-&bt BT_SEL 1    &kp F12       &kp LCTRL     &kp LALT  &ht LGUI F10          &none                       &none            &ht RGUI F1           &kp RALT  &kp RCTRL      &kp F11        &bt BT_DISC 1
+&bt BT_SEL 1    &kp F12       &kp LCTRL     &kp LALT  &mt LGUI F10          &none                       &none            &mt RGUI F1           &kp RALT  &kp RCTRL      &kp F11        &bt BT_DISC 1
 &trans          &kp F6        &kp F7        &kp F8    &kp F9                &none           &bt BT_CLR  &none            &kp F2                &kp F3    &kp F4         &kp F5         &trans
 &trans          &trans        &trans        &trans    &trans                &kp LEFT_SHIFT              &kp RIGHT_SHIFT  &trans                &trans    &trans         &trans         &trans
             >;
