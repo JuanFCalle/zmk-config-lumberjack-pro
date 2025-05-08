@@ -11,6 +11,8 @@
 #define BASE 0
 #define LOWER 1
 #define RAISE 2
+#define HRML(k1,k2,k3) &ht LCTRL k1  &ht LALT k2  &ht LGUI k3
+#define HRMR(k1,k2,k3) &ht RGUI k1  &ht RALT k2  &ht RCTRL k3
 
 /* Uncomment to enable the encoder */
 &sensors { status = "okay"; };
@@ -55,6 +57,19 @@
         };
     };
 
+    behaviors {
+        ht: hold_tap {
+                label = "hold_tap";
+                compatible = "zmk_behavior-hold-tap";
+                #binding-cells = <2>;
+                flavor = "tap-preferred";
+                tapping-term-ms = <220>;
+                quick-tap-ms = <150>;
+                global-quick-tap;
+                bindings = <&kp>, <&kp>;
+            }
+    }
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -62,7 +77,7 @@
             bindings = <
 &kp C_PWR      &kp C_PREV       &kp C_PP            &kp C_NEXT      &kp C_VOL_DN       &kp C_VOL_UP                      &caps_word             &kp CAPS             &kp LEFT         &kp DOWN             &kp UP         &kp RIGHT
 &appswitcher   &kp Q            &kp W               &kp F           &kp P              &kp G                             &kp J                  &kp L                &kp U            &kp Y                &kp SEMICOLON  &windowswitcher
-&kp BACKSPACE  &kp A            &mt LEFT_CONTROL R  &mt LEFT_ALT S  &mt LCMD T         &kp D                             &kp H                  &mt RIGHT_COMMAND N  &mt RIGHT_ALT E  &mt RIGHT_CONTROL I  &kp O          &kp ESCAPE
+&kp BACKSPACE  &kp A            HRML(R,             S,              T)                 &kp D                             &kp H                  HRMR(N,              E,               I)                   &kp O          &kp ESCAPE
 &kp TAB        &kp Z            &kp X               &kp C           &kp V              &kp B                 &kp C_MUTE  &kp K                  &kp M                &kp COMMA        &kp DOT              &kp FSLH       &kp RET
 &kp LS(TAB)    &kp LG(LSHFT)    &kp LG(LALT)        &lt 2 LEFT      &lt 1 DOWN         &mt LEFT_SHIFT SPACE              &mt RIGHT_SHIFT SPACE  &lt 1 UP             &lt 2 RIGHT      &kp RG(RALT)         &kp RG(RSHFT)  &kp RS(ENTER)
             >;
@@ -74,8 +89,8 @@
             bindings = <
 &trans     &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
 &kp GRAVE  &kp PERCENT      &kp AMPERSAND                      &kp DOUBLE_QUOTES   &kp PLUS                      &kp AT_SIGN             &kp DOLLAR       &kp UNDERSCORE                 &kp LEFT_BRACKET        &kp RIGHT_BRACKET                    &kp EXCLAMATION  &kp BACKSLASH
-&kp TILDE  &kp SQT          &mt LEFT_CONTROL LEFT_PARENTHESIS  &mt LEFT_ALT EQUAL  &mt LEFT_COMMAND N0  &kp LEFT_BRACE          &kp RIGHT_BRACE  &mt RIGHT_COMMAND N1  &mt RIGHT_ALT ASTERISK  &mt RIGHT_CONTROL RIGHT_PARENTHESIS  &kp MINUS        &kp PIPE
-&trans     &kp N6  &kp N7                    &kp N8     &kp N9               &kp CARET       &trans  &kp HASH         &kp N2                &kp N3         &kp N4                      &kp N5  &trans
+&kp TILDE  &kp SQT          HRML(LPAR,                         EQUAL,              N0)                           &kp LEFT_BRACE          &kp RIGHT_BRACE  HRMR(N1,                       STAR                    RPAR)                                &kp MINUS        &kp PIPE
+&trans     &kp N6           &kp N7                             &kp N8              &kp N9                        &kp CARET       &trans  &kp HASH         &kp N2                         &kp N3                  &kp N4                               &kp N5           &trans
 &trans     &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
             >;
 
@@ -86,7 +101,7 @@
             bindings = <
 &trans          &trans        &trans        &trans    &trans                &trans                      &trans           &trans                &trans    &trans         &trans         &trans
 &bt BT_SEL 0    &none         &none         &none     &none                 &none                       &none            &none                 &none     &none          &none          &bt BT_DISC 0
-&bt BT_SEL 1    &kp F12       &kp LCTRL     &kp LALT  &mt LEFT_COMMAND F10  &none                       &none            &mt RIGHT_COMMAND F1  &kp RALT  &kp RCTRL      &kp F11        &bt BT_DISC 1
+&bt BT_SEL 1    &kp F12       &kp LCTRL     &kp LALT  &ht LGUI F10          &none                       &none            &ht RGUI F1           &kp RALT  &kp RCTRL      &kp F11        &bt BT_DISC 1
 &trans          &kp F6        &kp F7        &kp F8    &kp F9                &none           &bt BT_CLR  &none            &kp F2                &kp F3    &kp F4         &kp F5         &trans
 &trans          &trans        &trans        &trans    &trans                &kp LEFT_SHIFT              &kp RIGHT_SHIFT  &trans                &trans    &trans         &trans         &trans
             >;
