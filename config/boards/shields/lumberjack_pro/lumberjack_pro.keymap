@@ -104,7 +104,7 @@
 &trans          &trans        &trans        &trans    &trans                &kp LEFT_SHIFT              &kp RIGHT_SHIFT  &trans                &trans    &trans         &trans         &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp RGB_BRI RGB_BRD>;
+            sensor-bindings = <&inc_dec_kp C_BRI_UP C_BRI_DN>;
         };
     };
 };
