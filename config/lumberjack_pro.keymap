@@ -1,0 +1,152 @@
+/*
+ * Copyright (c) 2021 The ZMK Contributors
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+
+#define BASE 0
+#define LOWER 1
+#define RAISE 2
+#define LMEH LS(LC(LALT))
+#define RMEH RS(RC(RALT))
+#define LHYPER LC(LA(LG(LSHFT)))
+#define RHYPER RC(RA(RG(RSHFT)))
+#define HRML(k1,k2,k3,k4,k5) &hm_left LMEH k1  &hm_left LGUI k2  &hm_left LCTRL k3  &hm_left LALT k4  &hm_shft_left LSHFT k5
+#define HRMR(k1,k2,k3,k4,k5) &hm_shft_right RSHFT k1  &hm_right RALT k2  &hm_right RCTRL k3  &hm_right RGUI k4 &hm_right RMEH k5
+
+/* Uncomment to enable the encoder */
+&sensors { status = "okay"; };
+&encoder { status = "okay"; };
+
+/ {
+    macros {
+        app_switcher: app_switcher {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCMD>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_tap>,
+                <&sk LCMD>,
+                <&macro_release>,
+                <&kp LCMD>;
+
+            tap-ms = <10>;
+            wait-ms = <50>;
+        };
+
+        window_switcher: window_switcher {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LALT>,
+                <&macro_tap>,
+                <&kp TAB>,
+                <&macro_tap>,
+                <&sk LALT>,
+                <&macro_release>,
+                <&kp LALT>;
+
+            tap-ms = <10>;
+            wait-ms = <50>;
+        };
+    };
+
+    behaviors {
+        hm_shft_right: hm_shft_right {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HM_SHFT_RIGHT";
+                bindings = <&kp>, <&kp>;
+
+                #binding-cells = <2>;
+                tapping-term-ms = <200>;
+                hold-while-undecided;
+                hold-trigger-key-positions = <13 14 15 16 17 25 26 27 28 29 37 38 39 40 41>;
+                hold-trigger-on-release;
+        };
+
+        hm_right: hm_right {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HM_RIGHT";
+                bindings = <&kp>, <&kp>;
+
+                #binding-cells = <2>;
+                tapping-term-ms = <200>;
+                hold-while-undecided;
+                hold-trigger-key-positions = <13 14 15 16 17 25 26 27 28 29 37 38 39 40 41>;
+                hold-trigger-on-release;
+                flavor = "tap-preferred";
+        };
+
+        hm_shft_left: hm_shft_left {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HM_SHFT_LEFT";
+                bindings = <&kp>, <&kp>;
+
+                #binding-cells = <2>;
+                tapping-term-ms = <200>;
+                hold-while-undecided;
+                hold-trigger-on-release;
+                hold-trigger-key-positions = <18 19 20 21 22 30 31 32 33 34 43 44 45 46 47>;
+        };
+
+        hm_left: hm_left {
+                compatible = "zmk,behavior-hold-tap";
+                label = "HM_LEFT";
+                bindings = <&kp>, <&kp>;
+
+                #binding-cells = <2>;
+                tapping-term-ms = <200>;
+                hold-while-undecided;
+                hold-trigger-key-positions = <18 19 20 21 22 30 31 32 33 34 43 44 45 46 47>;
+                hold-trigger-on-release;
+                flavor = "tap-preferred";
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+&kp C_PWR        &kp C_PREV       &kp C_PP            &kp C_NEXT      &kp C_VOL_DN       &kp C_VOL_UP                      &caps_word             &kp CAPS             &kp LEFT         &kp DOWN             &kp UP         &kp RIGHT
+&app_switcher    &kp Q            &kp W               &kp F           &kp P              &kp G                             &kp J                  &kp L                &kp U            &kp Y                &kp SEMICOLON  &window_switcher
+HRML(BACKSPACE,  A,               R,                  S,              T)                 &kp D                             &kp H                  HRMR(N,              E,               I,                   O,             ESCAPE)
+&kp TAB          &kp Z            &kp X               &kp C           &kp V              &kp B                 &kp C_MUTE  &kp K                  &kp M                &kp COMMA        &kp DOT              &kp FSLH       &kp RET
+&kp LS(TAB)      &kp LG(LSHFT)    &kp LG(LALT)        &lt 2 LEFT      &lt 1 DOWN         &mt LHYPER SPACE                  &mt RHYPER SPACE       &lt 1 UP             &lt 2 RIGHT      &kp RG(RALT)         &kp RG(RSHFT)  &kp RS(ENTER)
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        lower_layer {
+            bindings = <
+&trans       &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
+&kp GRAVE    &kp PERCENT      &kp AMPERSAND                      &kp DOUBLE_QUOTES   &kp PLUS                      &kp AT_SIGN             &kp DOLLAR       &kp UNDERSCORE                 &kp LEFT_BRACKET        &kp RIGHT_BRACKET                    &kp EXCLAMATION  &kp BACKSLASH
+HRML(TILDE,  SQT,             LPAR,                              EQUAL,              N0)                           &kp LEFT_BRACE          &kp RIGHT_BRACE  HRMR(N1,                       STAR,                   RPAR,                                MINUS,           PIPE)
+&trans       &kp N6           &kp N7                             &kp N8              &kp N9                        &kp CARET       &trans  &kp HASH         &kp N2                         &kp N3                  &kp N4                               &kp N5           &trans
+&trans       &trans           &trans                             &trans              &trans                        &trans                  &trans           &trans                         &trans                  &trans                               &trans           &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
+        };
+
+        raise_layer {
+            bindings = <
+&bt BT_CLR_ALL  &trans               &trans        &trans     &trans                    &trans                      &trans           &trans                   &trans    &trans         &trans              &bt BT_CLR
+&bt BT_SEL 0    &none                &none         &none      &none                     &none                       &none            &none                    &none     &none          &none               &bt BT_DISC 0
+&bt BT_SEL 1    &hm_left LGUI F12    &kp LCTRL     &kp LALT   &hm_shft_left LSHFT F10   &none                       &none            &hm_shft_right RSHFT F1  &kp RALT  &kp RCTRL      &hm_right RGUI F11  &bt BT_DISC 1
+&trans          &kp F6               &kp F7        &kp F8     &kp F9                    &none         &trans        &none            &kp F2                   &kp F3    &kp F4         &kp F5              &trans
+&trans          &trans               &trans        &trans     &trans                    &trans                      &trans           &trans                   &trans    &trans         &trans              &trans
+            >;
+
+        };
+    };
+};
