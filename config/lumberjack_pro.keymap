@@ -116,7 +116,7 @@
 
         default_layer {
             bindings = <
-&none            &none            &none               &none           $none              &none                             &none                  &none                &none            &none                &none          &none
+&none            &none            &none               &none           &none              &none                             &none                  &none                &none            &none                &none          &none
 &app_switcher    &kp Q            &kp W               &kp F           &kp P              &kp G                             &kp J                  &kp L                &kp U            &kp Y                &kp SEMICOLON  &window_switcher
 HRML(BACKSPACE,  A,               R,                  S,              T)                 &kp D                             &kp H                  HRMR(N,              E,               I,                   O,             ESCAPE)
 &kp TAB          &kp Z            &kp X               &kp C           &kp V              &kp B                 &kp C_MUTE  &kp K                  &kp M                &kp COMMA        &kp DOT              &kp FSLH       &kp RET
@@ -128,7 +128,7 @@ HRML(BACKSPACE,  A,               R,                  S,              T)        
 
         lower_layer {
             bindings = <
-&none        &none            &none           &none               $none              &none                   &none             &none                &none                   &none                &none            &none
+&none        &none            &none           &none               &none              &none                   &none             &none                &none                   &none                &none            &none
 &kp GRAVE    &kp PERCENT      &kp AMPERSAND   &kp DOUBLE_QUOTES   &kp PLUS           &kp AT_SIGN             &kp DOLLAR        &kp UNDERSCORE       &kp LEFT_BRACKET        &kp RIGHT_BRACKET    &kp EXCLAMATION  &kp BACKSLASH
 HRML(TILDE,  SQT,             LPAR,           EQUAL,              N0)                &kp LEFT_BRACE          &kp RIGHT_BRACE   HRMR(N1,             STAR,                   RPAR,                MINUS,           PIPE)
 &trans       &kp N6           &kp N7          &kp N8              &kp N9             &kp CARET       &trans  &kp HASH          &kp N2               &kp N3                  &kp N4               &kp N5           &trans
