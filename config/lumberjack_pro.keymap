@@ -67,7 +67,6 @@
             tapping-term-ms = <200>;
             hold-while-undecided;
             hold-trigger-on-release;
-            hold-trigger-key-positions = <18 19 20 21 22 30 31 32 33 34 43 44 45 46 47>;
             flavor = "hold-preferred";
         };
 
@@ -77,7 +76,6 @@
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             hold-while-undecided;
-            hold-trigger-key-positions = <13 14 15 16 17 25 26 27 28 29 37 38 39 40 41>;
             hold-trigger-on-release;
             flavor = "hold-preferred";
         };
@@ -123,8 +121,8 @@ HRML(BACKSPACE,  A,               R,                  S,              T)        
         lower_layer {
             bindings = <
 &none        &none            &none           &none               &none              &none                   &none             &none                &none                   &none                &none            &none
-&kp TILDE    &kp PERCENT      &kp AMPERSAND   &kp DOUBLE_QUOTES   &kp PLUS           &kp AT_SIGN             &kp DOLLAR        &kp UNDERSCORE       &kp LEFT_BRACKET        &kp RIGHT_BRACKET    &kp EXCLAMATION  &kp PIPE
-HRML(GRAVE,  SQT,             LPAR,           EQUAL,              N0)                &kp LEFT_BRACE          &kp RIGHT_BRACE   HRMR(N1,             STAR,                   RPAR,                MINUS,           BACKSLASH)
+&kp GRAVE    &kp PERCENT      &kp AMPERSAND   &kp DOUBLE_QUOTES   &kp PLUS           &kp AT_SIGN             &kp DOLLAR        &kp UNDERSCORE       &kp LEFT_BRACKET        &kp RIGHT_BRACKET    &kp EXCLAMATION  &kp BACKSLASH
+HRML(TILDE,  SQT,             LPAR,           EQUAL,              N0)                &kp LEFT_BRACE          &kp RIGHT_BRACE   HRMR(N1,             STAR,                   RPAR,                MINUS,           PIPE)
 &trans       &kp N6           &kp N7          &kp N8              &kp N9             &kp CARET       &trans  &kp HASH          &kp N2               &kp N3                  &kp N4               &kp N5           &trans
 &none        &none            &none          &trans               &trans             &trans                  &trans            &trans               &trans                  &none                &none            &none
             >;
@@ -136,7 +134,7 @@ HRML(GRAVE,  SQT,             LPAR,           EQUAL,              N0)           
             bindings = <
 &none            &none           &none          &none          &none       &none                       &none            &none                    &none        &none       &none               &none
 &bt BT_SEL 0     &bt BT_SEL 1    &bt BT_DISC 0  &bt BT_DISC 1  &bt BT_CLR  &bt BT_CLR_ALL              &kp C_PREV       &kp C_PP                 &kp C_NEXT   &none       &none               &none
-HRML(BACKSPACE,  F12,            LEFT,          UP,            DOWN)       &kp RIGHT                   &kp LEFT         HRMR(DOWN,               UP,          RIGHT,      F11,                ESCAPE)
+&none  		 &kp F12         &kp LCTRL      &kp LALT       &kp LCMD    &none                       &none            HRMR(DOWN,               UP,          RIGHT,      F11,                ESCAPE)
 &trans           &kp F6          &kp F7         &kp F8         &kp F9      &kp F10         &trans      &kp F1           &kp F2                   &kp F3       &kp F4      &kp F5              &trans
 &none            &none           &none          &trans         &trans      &trans                      &trans           &trans                   &trans       &none       &none               &none
             >;
